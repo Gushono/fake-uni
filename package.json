@@ -1,0 +1,47 @@
+{
+  "name": "portal-wyden",
+  "version": "1.0.0",
+  "description": "Portal universitário completo da Faculdade Wyden com sistema de autenticação, carteirinha virtual e gestão acadêmica",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npx serve -s public -l 8000",
+    "dev": "npx serve -s public -l 8000",
+    "serve": "npx serve -s public",
+    "serve:port": "npx serve -s public -l",
+    "open": "npx serve -s public -l 8000 --open",
+    "build": "echo 'Projeto React via CDN - não necessita build'",
+    "test": "echo 'Testes não configurados ainda'",
+    "clean": "rm -rf node_modules package-lock.json && npm install",
+    "info": "echo 'Portal Wyden - Acesse: http://localhost:8000'"
+  },
+  "keywords": [
+    "portal",
+    "universitario",
+    "wyden",
+    "react",
+    "educacao",
+    "carteirinha",
+    "sistema-academico"
+  ],
+  "author": "Gustavo Honorato",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gustavohonorato/portal-wyden.git"
+  },
+  "homepage": ".",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  },
+  "dependencies": {},
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

@@ -37,6 +37,8 @@ function App() {
     const [showUserDropdown, setShowUserDropdown] = useState(false);
     const [userPageEmail, setUserPageEmail] = useState(null);
     const [selectedVideo, setSelectedVideo] = useState(null);
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    const [currentMonth, setCurrentMonth] = useState(new Date(2025, 0, 1)); // Janeiro 2025
 
     // Detectar se é uma página de usuário pela URL
     React.useEffect(() => {
@@ -111,7 +113,7 @@ function App() {
             videoUrl: "https://www.youtube.com/embed/1Rs2ND1luY4",
             category: "Desenvolvimento Web",
             instructor: "Prof. Maria Santos",
-            date: "2024-03-15"
+            date: "2025-03-15"
         },
         {
             id: 2,
@@ -122,7 +124,7 @@ function App() {
             videoUrl: "https://www.youtube.com/embed/HXV3zeQKqGY",
             category: "Banco de Dados",
             instructor: "Prof. Carlos Silva",
-            date: "2024-03-14"
+            date: "2025-03-14"
         },
         {
             id: 3,
@@ -133,7 +135,7 @@ function App() {
             videoUrl: "https://www.youtube.com/embed/w7ejDZ8SWv8",
             category: "Desenvolvimento Web",
             instructor: "Prof. João Oliveira",
-            date: "2024-03-13"
+            date: "2025-03-13"
         },
         {
             id: 4,
@@ -144,7 +146,71 @@ function App() {
             videoUrl: "https://www.youtube.com/embed/3hLmDS179YE",
             category: "Cloud",
             instructor: "Prof. Ana Costa",
-            date: "2024-03-12"
+            date: "2025-03-12"
+        }
+    ];
+
+    // Adicionar dados mockados de eventos acadêmicos
+    const academicEvents = [
+        {
+            id: 1,
+            title: "Prova de Programação Web",
+            type: "exam",
+            date: "2025-03-25",
+            time: "19:00",
+            duration: "120",
+            location: "Sala 302",
+            discipline: "Programação Web",
+            professor: "Prof. Maria Santos",
+            description: "Prova prática de HTML, CSS e JavaScript"
+        },
+        {
+            id: 2,
+            title: "Entrega do TCC",
+            type: "assignment",
+            date: "2025-04-15",
+            time: "23:59",
+            duration: "0",
+            location: "Portal Acadêmico",
+            discipline: "Trabalho de Conclusão de Curso",
+            professor: "Prof. Carlos Silva",
+            description: "Entrega final do TCC com apresentação"
+        },
+        {
+            id: 3,
+            title: "Workshop de React",
+            type: "workshop",
+            date: "2025-03-28",
+            time: "14:00",
+            duration: "180",
+            location: "Laboratório 5",
+            discipline: "Desenvolvimento Web",
+            professor: "Prof. João Oliveira",
+            description: "Workshop prático de React.js e Hooks"
+        },
+        {
+            id: 4,
+            title: "Reunião de Estágio",
+            type: "meeting",
+            date: "2025-04-02",
+            time: "15:00",
+            duration: "60",
+            location: "Sala de Reuniões",
+            discipline: "Estágio Supervisionado",
+            professor: "Prof. Ana Costa",
+            description: "Apresentação do relatório de estágio"
+        },
+        {
+            id: 5,
+            title: "Prova de Banco de Dados",
+            type: "exam",
+            date: "2025-04-05",
+            time: "19:00",
+            duration: "120",
+            location: "Sala 205",
+            discipline: "Banco de Dados",
+            professor: "Prof. Carlos Silva",
+            description: "Prova teórica e prática de SQL"
         }
     ];
 
@@ -192,7 +258,10 @@ function App() {
                     <div className="d-flex gap-4 align-items-center">
                         <a className="text-white text-decoration-none" href="#" onClick={() => showPage('home')}>Início</a>
                         {isLoggedIn ? (
-                            <a className="text-white text-decoration-none" href="#" onClick={() => showPage('lessons')}>Aulas</a>
+                            <>
+                                <a className="text-white text-decoration-none" href="#" onClick={() => showPage('lessons')}>Aulas</a>
+                                <a className="text-white text-decoration-none" href="#" onClick={() => showPage('calendar')}>Calendário</a>
+                            </>
                         ) : (
                             <a className="text-white text-decoration-none" href="#" onClick={() => showPage('courses')}>Cursos</a>
                         )}
@@ -858,7 +927,7 @@ function App() {
                                     <div className="news-item">
                                         <div className="d-flex justify-content-between align-items-start mb-3">
                                             <span className="badge bg-primary">Destaque</span>
-                                            <small className="text-muted">15 de Novembro, 2024</small>
+                                            <small className="text-muted">15 de Novembro, 2025</small>
                                         </div>
                                         <h3>Wyden inaugura novo laboratório de Inteligência Artificial</h3>
                                         <p>A Faculdade Wyden acaba de inaugurar seu mais novo laboratório, equipado com as tecnologias mais avançadas em IA e Machine Learning. O espaço conta com 40 estações de trabalho, GPUs de última geração e parcerias com empresas do Vale do Silício.</p>
@@ -976,7 +1045,7 @@ function App() {
                                         </div>
                                         <div className="card-body">
                                             <div className="mb-3">
-                                                <div className="fw-bold text-primary">18 Nov</div>
+                                                <div className="fw-bold text-primary">18 Nov 2025</div>
                                                 <small>Palestra: "Futuro do Trabalho"</small>
                                                 <br /><small className="text-muted">19h - Auditório Principal</small>
                                             </div>
@@ -1544,6 +1613,255 @@ function App() {
                 </div>
             )}
 
+            {/* Adicionar nova página de calendário */}
+            {currentPage === 'calendar' && isLoggedIn && (
+                <div>
+                    <section className="py-5 text-white" style={{background: COLORS.gradientPrimary}}>
+                        <div className="container">
+                            <div className="text-center">
+                                <h1 className="display-4 mb-4">Calendário Acadêmico</h1>
+                                <p className="lead mb-0">Acompanhe seus eventos e atividades acadêmicas</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section className="py-5" style={{backgroundColor: COLORS.light}}>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-8">
+                                    <div className="card shadow-sm mb-4">
+                                        <div className="card-body">
+                                            <div className="d-flex justify-content-between align-items-center mb-4">
+                                                <h5 className="mb-0">
+                                                    <i className="fas fa-calendar-alt me-2"></i>
+                                                    {currentMonth.toLocaleString('pt-BR', { month: 'long', year: 'numeric' })}
+                                                </h5>
+                                                <div className="btn-group">
+                                                    <button 
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))}
+                                                    >
+                                                        <i className="fas fa-chevron-left"></i>
+                                                    </button>
+                                                    <button 
+                                                        className="btn btn-outline-primary btn-sm"
+                                                        onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))}
+                                                    >
+                                                        <i className="fas fa-chevron-right"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="calendar-grid">
+                                                <div className="calendar-header">
+                                                    <div>Dom</div>
+                                                    <div>Seg</div>
+                                                    <div>Ter</div>
+                                                    <div>Qua</div>
+                                                    <div>Qui</div>
+                                                    <div>Sex</div>
+                                                    <div>Sáb</div>
+                                                </div>
+                                                
+                                                <div className="calendar-body">
+                                                    {(() => {
+                                                        const year = currentMonth.getFullYear();
+                                                        const month = currentMonth.getMonth();
+                                                        
+                                                        // Primeiro dia do mês
+                                                        const firstDay = new Date(year, month, 1);
+                                                        // Último dia do mês
+                                                        const lastDay = new Date(year, month + 1, 0);
+                                                        
+                                                        // Dia da semana do primeiro dia (0 = Domingo, 6 = Sábado)
+                                                        const firstDayOfWeek = firstDay.getDay();
+                                                        
+                                                        // Array para armazenar todos os dias do calendário
+                                                        const days = [];
+                                                        
+                                                        // Adicionar dias do mês anterior
+                                                        const prevMonthLastDay = new Date(year, month, 0).getDate();
+                                                        for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+                                                            const date = new Date(year, month - 1, prevMonthLastDay - i);
+                                                            days.push(date);
+                                                        }
+                                                        
+                                                        // Adicionar dias do mês atual
+                                                        for (let i = 1; i <= lastDay.getDate(); i++) {
+                                                            days.push(new Date(year, month, i));
+                                                        }
+                                                        
+                                                        // Adicionar dias do próximo mês
+                                                        const remainingDays = 42 - days.length; // 6 semanas * 7 dias
+                                                        for (let i = 1; i <= remainingDays; i++) {
+                                                            days.push(new Date(year, month + 1, i));
+                                                        }
+                                                        
+                                                        return days.map((date, index) => {
+                                                            const dayEvents = academicEvents.filter(event => {
+                                                                const eventDate = new Date(event.date);
+                                                                return eventDate.toDateString() === date.toDateString();
+                                                            });
+                                                            
+                                                            const isCurrentMonth = date.getMonth() === month;
+                                                            const isToday = date.toDateString() === new Date().toDateString();
+                                                            
+                                                            return (
+                                                                <div 
+                                                                    key={index} 
+                                                                    className={`calendar-day 
+                                                                        ${!isCurrentMonth ? 'other-month' : ''} 
+                                                                        ${dayEvents.length > 0 ? 'has-events' : ''}
+                                                                        ${isToday ? 'today' : ''}`}
+                                                                >
+                                                                    <div className="day-number">{date.getDate()}</div>
+                                                                    {dayEvents.map(event => (
+                                                                        <div 
+                                                                            key={event.id}
+                                                                            className={`calendar-event ${event.type}`}
+                                                                            onClick={() => setSelectedEvent(event)}
+                                                                            title={event.title}
+                                                                        >
+                                                                            <i className={`fas ${
+                                                                                event.type === 'exam' ? 'fa-file-alt' :
+                                                                                event.type === 'assignment' ? 'fa-tasks' :
+                                                                                event.type === 'workshop' ? 'fa-laptop-code' :
+                                                                                'fa-users'
+                                                                            }`}></i>
+                                                                            {event.title}
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            );
+                                                        });
+                                                    })()}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div className="col-md-4">
+                                    <div className="card shadow-sm mb-4">
+                                        <div className="card-header bg-primary text-white">
+                                            <h6 className="mb-0">
+                                                <i className="fas fa-filter me-2"></i>
+                                                Filtros
+                                            </h6>
+                                        </div>
+                                        <div className="card-body">
+                                            <div className="mb-3">
+                                                <label className="form-label">Tipo de Evento</label>
+                                                <div className="d-flex flex-wrap gap-2">
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" id="filter-exam" defaultChecked />
+                                                        <label className="form-check-label" htmlFor="filter-exam">
+                                                            <span className="badge bg-danger">Provas</span>
+                                                        </label>
+                                                    </div>
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" id="filter-assignment" defaultChecked />
+                                                        <label className="form-check-label" htmlFor="filter-assignment">
+                                                            <span className="badge bg-warning">Trabalhos</span>
+                                                        </label>
+                                                    </div>
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" id="filter-workshop" defaultChecked />
+                                                        <label className="form-check-label" htmlFor="filter-workshop">
+                                                            <span className="badge bg-info">Workshops</span>
+                                                        </label>
+                                                    </div>
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" id="filter-meeting" defaultChecked />
+                                                        <label className="form-check-label" htmlFor="filter-meeting">
+                                                            <span className="badge bg-success">Reuniões</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div className="mb-3">
+                                                <label className="form-label">Disciplina</label>
+                                                <select className="form-select">
+                                                    <option value="">Todas as disciplinas</option>
+                                                    <option value="web">Programação Web</option>
+                                                    <option value="db">Banco de Dados</option>
+                                                    <option value="tcc">Trabalho de Conclusão de Curso</option>
+                                                    <option value="estagio">Estágio Supervisionado</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    {selectedEvent && (
+                                        <div className="card shadow-sm">
+                                            <div className="card-header" style={{
+                                                backgroundColor: 
+                                                    selectedEvent.type === 'exam' ? COLORS.danger :
+                                                    selectedEvent.type === 'assignment' ? COLORS.warning :
+                                                    selectedEvent.type === 'workshop' ? COLORS.info :
+                                                    COLORS.success,
+                                                color: 'white'
+                                            }}>
+                                                <h6 className="mb-0">
+                                                    <i className={`fas ${
+                                                        selectedEvent.type === 'exam' ? 'fa-file-alt' :
+                                                        selectedEvent.type === 'assignment' ? 'fa-tasks' :
+                                                        selectedEvent.type === 'workshop' ? 'fa-laptop-code' :
+                                                        'fa-users'
+                                                    } me-2`}></i>
+                                                    {selectedEvent.title}
+                                                </h6>
+                                            </div>
+                                            <div className="card-body">
+                                                <div className="mb-3">
+                                                    <small className="text-muted d-block">Data e Hora</small>
+                                                    <strong>
+                                                        {new Date(selectedEvent.date).toLocaleDateString()} às {selectedEvent.time}
+                                                        {selectedEvent.duration > 0 && ` (${selectedEvent.duration} min)`}
+                                                    </strong>
+                                                </div>
+                                                
+                                                <div className="mb-3">
+                                                    <small className="text-muted d-block">Local</small>
+                                                    <strong>{selectedEvent.location}</strong>
+                                                </div>
+                                                
+                                                <div className="mb-3">
+                                                    <small className="text-muted d-block">Disciplina</small>
+                                                    <strong>{selectedEvent.discipline}</strong>
+                                                </div>
+                                                
+                                                <div className="mb-3">
+                                                    <small className="text-muted d-block">Professor</small>
+                                                    <strong>{selectedEvent.professor}</strong>
+                                                </div>
+                                                
+                                                <div className="mb-3">
+                                                    <small className="text-muted d-block">Descrição</small>
+                                                    <p className="mb-0">{selectedEvent.description}</p>
+                                                </div>
+                                                
+                                                <div className="d-flex gap-2">
+                                                    <button className="btn btn-sm btn-outline-primary flex-grow-1">
+                                                        <i className="fas fa-bell me-1"></i>
+                                                        Lembrete
+                                                    </button>
+                                                    <button className="btn btn-sm btn-outline-secondary flex-grow-1">
+                                                        <i className="fas fa-calendar-plus me-1"></i>
+                                                        Adicionar ao Google Calendar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            )}
+
             <footer className="bg-dark text-white py-4 text-center">
                 <div className="container">
                     <h5 className="d-flex align-items-center justify-content-center gap-2 mb-3">
@@ -1689,6 +2007,126 @@ function App() {
                         width: 100%;
                         height: 100%;
                         object-fit: cover;
+                    }
+                    
+                    .calendar-grid {
+                        border: 1px solid ${COLORS.grayLight};
+                        border-radius: 0.5rem;
+                        overflow: hidden;
+                    }
+                    
+                    .calendar-header {
+                        display: grid;
+                        grid-template-columns: repeat(7, 1fr);
+                        background: ${COLORS.grayLight};
+                        padding: 0.5rem;
+                        font-weight: 600;
+                        text-align: center;
+                    }
+                    
+                    .calendar-body {
+                        display: grid;
+                        grid-template-columns: repeat(7, 1fr);
+                        grid-auto-rows: minmax(100px, auto);
+                    }
+                    
+                    .calendar-day {
+                        border: 1px solid ${COLORS.grayLight};
+                        padding: 0.5rem;
+                        min-height: 100px;
+                        background: white;
+                    }
+                    
+                    .calendar-day.other-month {
+                        background: ${COLORS.light};
+                        color: ${COLORS.gray};
+                    }
+                    
+                    .calendar-day.has-events {
+                        background: ${COLORS.light};
+                    }
+                    
+                    .day-number {
+                        font-weight: 600;
+                        margin-bottom: 0.5rem;
+                    }
+                    
+                    .calendar-event {
+                        font-size: 0.8rem;
+                        padding: 0.25rem 0.5rem;
+                        margin-bottom: 0.25rem;
+                        border-radius: 0.25rem;
+                        cursor: pointer;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        color: white;
+                    }
+                    
+                    .calendar-event.exam {
+                        background: ${COLORS.danger};
+                    }
+                    
+                    .calendar-event.assignment {
+                        background: ${COLORS.warning};
+                    }
+                    
+                    .calendar-event.workshop {
+                        background: ${COLORS.info};
+                    }
+                    
+                    .calendar-event.meeting {
+                        background: ${COLORS.success};
+                    }
+                    
+                    .calendar-event:hover {
+                        filter: brightness(90%);
+                    }
+                    
+                    .calendar-day.today {
+                        background: ${COLORS.primaryLight}20;
+                        border: 2px solid ${COLORS.primary};
+                    }
+                    
+                    .calendar-day.today .day-number {
+                        color: ${COLORS.primary};
+                        font-weight: bold;
+                    }
+                    
+                    .calendar-event {
+                        font-size: 0.75rem;
+                        padding: 0.2rem 0.4rem;
+                        margin-bottom: 0.2rem;
+                        border-radius: 0.25rem;
+                        cursor: pointer;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.25rem;
+                    }
+                    
+                    .calendar-event i {
+                        font-size: 0.7rem;
+                    }
+                    
+                    .calendar-day {
+                        position: relative;
+                        min-height: 120px;
+                    }
+                    
+                    .calendar-day.other-month {
+                        opacity: 0.5;
+                    }
+                    
+                    .calendar-day.has-events {
+                        background: ${COLORS.light};
+                    }
+                    
+                    .calendar-day.has-events:hover {
+                        background: ${COLORS.grayLight};
                     }
                 `}
             </style>

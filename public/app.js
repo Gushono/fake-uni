@@ -30,6 +30,110 @@ const COLORS = {
     gradientAccent2: 'linear-gradient(135deg, #8E44AD, #6C3483)'
 };
 
+// Substituir os ícones dos cursos por imagens reais e adicionar detalhes para o modal
+const courseImages = {
+    "Sistemas de Informação": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80",
+    "Direito": "https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80",
+    "Administração": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
+    "Psicologia": "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80",
+    "Marketing": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80",
+    "Gestão Financeira": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80"
+};
+
+const courseDetails = {
+    "Sistemas de Informação": {
+        description: "Desenvolva soluções tecnológicas inovadoras e gerencie sistemas complexos.",
+        curriculum: [
+            "Algoritmos e Programação",
+            "Banco de Dados",
+            "Engenharia de Software",
+            "Redes de Computadores",
+            "Inteligência Artificial",
+            "Gestão de Projetos"
+        ],
+        highlights: [
+            "Laboratórios modernos",
+            "Parcerias com empresas de tecnologia",
+            "Projetos práticos desde o 1º semestre"
+        ]
+    },
+    "Direito": {
+        description: "Formação jurídica sólida com ética profissional e responsabilidade social.",
+        curriculum: [
+            "Direito Civil e Penal",
+            "Direito Constitucional",
+            "Prática Jurídica",
+            "Direito Empresarial",
+            "Direitos Humanos"
+        ],
+        highlights: [
+            "Simulações de júri",
+            "Clínica jurídica própria",
+            "Preparação para OAB"
+        ]
+    },
+    "Administração": {
+        description: "Forme-se para liderar organizações e tomar decisões estratégicas.",
+        curriculum: [
+            "Gestão Empresarial",
+            "Finanças Corporativas",
+            "Marketing Estratégico",
+            "Empreendedorismo",
+            "Gestão de Pessoas"
+        ],
+        highlights: [
+            "Projetos de consultoria",
+            "Laboratórios de negócios",
+            "Parcerias com empresas"
+        ]
+    },
+    "Psicologia": {
+        description: "Compreenda o comportamento humano e promova bem-estar mental.",
+        curriculum: [
+            "Psicologia Clínica",
+            "Neuropsicologia",
+            "Psicologia Social",
+            "Psicoterapia",
+            "Psicologia Organizacional"
+        ],
+        highlights: [
+            "Clínica escola",
+            "Projetos de extensão",
+            "Aulas práticas"
+        ]
+    },
+    "Marketing": {
+        description: "Domine estratégias de comunicação e construção de marcas impactantes.",
+        curriculum: [
+            "Marketing Digital",
+            "Branding e Design",
+            "Mídias Sociais",
+            "E-commerce",
+            "Pesquisa de Mercado"
+        ],
+        highlights: [
+            "Laboratórios de mídia",
+            "Projetos reais com empresas",
+            "Eventos de networking"
+        ]
+    },
+    "Gestão Financeira": {
+        description: "Especialista em planejamento financeiro e investimentos corporativos.",
+        curriculum: [
+            "Análise de Investimentos",
+            "Controladoria",
+            "Mercado de Capitais",
+            "Planejamento Tributário",
+            "Gestão de Custos"
+        ],
+        highlights: [
+            "Simulações financeiras",
+            "Laboratórios de finanças",
+            "Parcerias com bancos"
+        ]
+    }
+};
+
 function App() {
     const [currentPage, setCurrentPage] = useState('home');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,6 +143,7 @@ function App() {
     const [selectedVideo, setSelectedVideo] = useState(null);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [currentMonth, setCurrentMonth] = useState(new Date(2025, 0, 1)); // Janeiro 2025
+    const [selectedCourse, setSelectedCourse] = useState(null);
 
     // Detectar se é uma página de usuário pela URL
     React.useEffect(() => {
@@ -254,79 +359,96 @@ function App() {
                         <WydenLogo />
                         <strong>Faculdade Wyden</strong>
                     </a>
-                    
-                    <div className="d-flex gap-4 align-items-center">
-                        <a className="text-white text-decoration-none" href="#" onClick={() => showPage('home')}>Início</a>
-                        {isLoggedIn ? (
-                            <>
-                                <a className="text-white text-decoration-none" href="#" onClick={() => showPage('lessons')}>Aulas</a>
-                                <a className="text-white text-decoration-none" href="#" onClick={() => showPage('calendar')}>Calendário</a>
-                            </>
-                        ) : (
-                            <a className="text-white text-decoration-none" href="#" onClick={() => showPage('courses')}>Cursos</a>
-                        )}
-                        <a className="text-white text-decoration-none" href="#" onClick={() => showPage('news')}>Notícias</a>
-                        <a className="text-white text-decoration-none" href="#" onClick={() => showPage('contact')}>Contato</a>
-                        
-                        {!isLoggedIn ? (
-                            <a className="text-white text-decoration-none" href="#" onClick={() => showPage('login')}>
-                                <i className="fas fa-sign-in-alt"></i> Portal
-                            </a>
-                        ) : (
-                            <div className="position-relative user-dropdown-container">
-                                <button 
-                                    className="btn text-white text-decoration-none d-flex align-items-center gap-1" 
-                                    onClick={toggleUserDropdown}
-                                    style={{border: 'none', background: 'none', padding: '0.5rem'}}
-                                >
-                                    <i className="fas fa-user"></i> {currentUser?.name.split(' ')[0]}
-                                    <i className={`fas fa-chevron-${showUserDropdown ? 'up' : 'down'} ms-1`}></i>
-                                </button>
-                                
-                                {showUserDropdown && (
-                                    <div className="position-absolute bg-white rounded shadow" 
-                                         style={{
-                                             top: '100%', 
-                                             right: '0', 
-                                             minWidth: '200px', 
-                                             zIndex: 1050,
-                                             border: '1px solid #dee2e6'
-                                         }}>
-                                        <div className="py-1">
-                                            <button 
-                                                className="dropdown-item d-flex align-items-center gap-2 px-3 py-2" 
-                                                onClick={() => showPage('profile')}
-                                                style={{border: 'none', background: 'none', width: '100%', textAlign: 'left'}}
-                                            >
-                                                <i className="fas fa-chart-bar text-primary"></i> Meus Dados
-                                            </button>
-                                            <button 
-                                                className="dropdown-item d-flex align-items-center gap-2 px-3 py-2" 
-                                                onClick={() => showPage('card')}
-                                                style={{border: 'none', background: 'none', width: '100%', textAlign: 'left'}}
-                                            >
-                                                <i className="fas fa-id-card text-primary"></i> Carteirinha
-                                            </button>
-                                            <hr className="dropdown-divider my-1" />
-                                            <button 
-                                                className="dropdown-item d-flex align-items-center gap-2 px-3 py-2" 
-                                                onClick={logout}
-                                                style={{border: 'none', background: 'none', width: '100%', textAlign: 'left'}}
-                                            >
-                                                <i className="fas fa-sign-out-alt text-danger"></i> Sair
-                                            </button>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav ms-auto align-items-lg-center gap-lg-4">
+                            {!isLoggedIn || !currentUser ? (
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="#" onClick={() => showPage('home')}>Início</a>
+                                </li>
+                            ) : null}
+                            {isLoggedIn ? (
+                                <>
+                                    <li className="nav-item">
+                                        <a className="nav-link text-white" href="#" onClick={() => showPage('lessons')}>Aulas</a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link text-white" href="#" onClick={() => showPage('calendar')}>Calendário</a>
+                                    </li>
+                                </>
+                            ) : (
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="#" onClick={() => showPage('courses')}>Cursos</a>
+                                </li>
+                            )}
+                            <li className="nav-item">
+                                <a className="nav-link text-white" href="#" onClick={() => showPage('news')}>Notícias</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link text-white" href="#" onClick={() => showPage('contact')}>Contato</a>
+                            </li>
+                            {!isLoggedIn ? (
+                                <li className="nav-item">
+                                    <a className="nav-link text-white" href="#" onClick={() => showPage('login')}>
+                                        <i className="fas fa-sign-in-alt"></i> Portal
+                                    </a>
+                                </li>
+                            ) : (
+                                <li className="nav-item user-dropdown-container position-relative">
+                                    <button 
+                                        className="btn text-white text-decoration-none d-flex align-items-center gap-1" 
+                                        onClick={toggleUserDropdown}
+                                        style={{border: 'none', background: 'none', padding: '0.5rem'}}
+                                    >
+                                        <i className="fas fa-user"></i> {currentUser?.name.split(' ')[0]}
+                                        <i className={`fas fa-chevron-${showUserDropdown ? 'up' : 'down'} ms-1`}></i>
+                                    </button>
+                                    {showUserDropdown && (
+                                        <div className="position-absolute bg-white rounded shadow" 
+                                             style={{
+                                                 top: '100%', 
+                                                 right: '0', 
+                                                 minWidth: '200px', 
+                                                 zIndex: 1050,
+                                                 border: '1px solid #dee2e6'
+                                             }}>
+                                            <div className="py-1">
+                                                <button 
+                                                    className="dropdown-item d-flex align-items-center gap-2 px-3 py-2" 
+                                                    onClick={() => showPage('profile')}
+                                                    style={{border: 'none', background: 'none', width: '100%', textAlign: 'left'}}
+                                                >
+                                                    <i className="fas fa-chart-bar text-primary"></i> Meus Dados
+                                                </button>
+                                                <button 
+                                                    className="dropdown-item d-flex align-items-center gap-2 px-3 py-2" 
+                                                    onClick={() => showPage('card')}
+                                                    style={{border: 'none', background: 'none', width: '100%', textAlign: 'left'}}
+                                                >
+                                                    <i className="fas fa-id-card text-primary"></i> Carteirinha
+                                                </button>
+                                                <hr className="dropdown-divider my-1" />
+                                                <button 
+                                                    className="dropdown-item d-flex align-items-center gap-2 px-3 py-2" 
+                                                    onClick={logout}
+                                                    style={{border: 'none', background: 'none', width: '100%', textAlign: 'left'}}
+                                                >
+                                                    <i className="fas fa-sign-out-alt text-danger"></i> Sair
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                                    )}
+                                </li>
+                            )}
+                        </ul>
                     </div>
                 </div>
             </nav>
 
             {/* Remover a seção de videoaulas da home */}
-            {/* Página Inicial */}
-            {currentPage === 'home' && (
+            {currentPage === 'home' && (!isLoggedIn || !currentUser) && (
                 <div>
                     <section className="hero-section text-white text-center py-5" 
                              style={{background: 'linear-gradient(135deg, rgba(229, 62, 62, 0.9), rgba(197, 48, 48, 0.9))'}}>
@@ -343,7 +465,6 @@ function App() {
                             </div>
                         </div>
                     </section>
-
                     <section className="py-5 text-white" 
                              style={{background: 'linear-gradient(135deg, #E53E3E, #C53030)'}}>
                         <div className="container">
@@ -367,7 +488,6 @@ function App() {
                             </div>
                         </div>
                     </section>
-
                     <section className="py-5">
                         <div className="container">
                             <h2 className="text-center mb-5">Nossos Serviços</h2>
@@ -416,205 +536,60 @@ function App() {
                             </div>
                         </div>
                     </section>
-
                     <section className="py-5">
                         <div className="container">
-                            <div className="row mb-5">
-                                <div className="col-md-8 mx-auto text-center">
-                                    <h2 className="section-title">Graduação</h2>
-                                    <p className="text-muted">Cursos reconhecidos pelo MEC com foco no mercado de trabalho</p>
-                                </div>
-                            </div>
-
                             <div className="row">
-                                <div className="col-md-4 mb-4">
-                                    <div className="card h-100 course-card">
-                                        <div className="course-image">
-                                            <i className="fas fa-laptop-code"></i>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title text-primary">Sistemas de Informação</h5>
-                                            <div className="mb-3">
-                                                <span className="badge bg-primary">4 anos</span>
-                                                <span className="badge bg-secondary ms-2">Bacharelado</span>
-                                            </div>
-                                            <p className="card-text">Desenvolva soluções tecnológicas inovadoras e gerencie sistemas complexos.</p>
-                                            <ul className="list-unstyled">
-                                                <li><i className="fas fa-check text-success me-2"></i>Programação Avançada</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Banco de Dados</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Engenharia de Software</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Gestão de Projetos</li>
-                                            </ul>
-                                            <div className="mt-auto">
-                                                <small className="text-muted"><i className="fas fa-clock me-1"></i>Noturno e Matutino</small>
+                                {Object.keys(courseImages).map((course, idx) => (
+                                    <div className="col-md-4 mb-4" key={course}>
+                                        <div className="card h-100 course-card hover-shadow" style={{cursor: 'pointer'}} onClick={() => setSelectedCourse(course)}>
+                                            <img src={courseImages[course]} className="card-img-top" alt={course} style={{height: '180px', objectFit: 'cover'}} />
+                                            <div className="card-body">
+                                                <h5 className="card-title text-primary">{course}</h5>
+                                                <p className="card-text">{courseDetails[course].description}</p>
+                                                <ul className="list-unstyled mb-2">
+                                                    {courseDetails[course].highlights.map((h, i) => (
+                                                        <li key={i}><i className="fas fa-check text-success me-2"></i>{h}</li>
+                                                    ))}
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="col-md-4 mb-4">
-                                    <div className="card h-100 course-card">
-                                        <div className="course-image">
-                                            <i className="fas fa-balance-scale"></i>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title text-primary">Direito</h5>
-                                            <div className="mb-3">
-                                                <span className="badge bg-primary">5 anos</span>
-                                                <span className="badge bg-secondary ms-2">Bacharelado</span>
-                                            </div>
-                                            <p className="card-text">Formação jurídica sólida com ética profissional e responsabilidade social.</p>
-                                            <ul className="list-unstyled">
-                                                <li><i className="fas fa-check text-success me-2"></i>Direito Civil e Penal</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Direito Constitucional</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Prática Jurídica</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>OAB Intensivo</li>
-                                            </ul>
-                                            <div className="mt-auto">
-                                                <small className="text-muted"><i className="fas fa-clock me-1"></i>Matutino e Noturno</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-4 mb-4">
-                                    <div className="card h-100 course-card">
-                                        <div className="course-image">
-                                            <i className="fas fa-briefcase"></i>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title text-primary">Administração</h5>
-                                            <div className="mb-3">
-                                                <span className="badge bg-primary">4 anos</span>
-                                                <span className="badge bg-secondary ms-2">Bacharelado</span>
-                                            </div>
-                                            <p className="card-text">Forme-se para liderar organizações e tomar decisões estratégicas.</p>
-                                            <ul className="list-unstyled">
-                                                <li><i className="fas fa-check text-success me-2"></i>Gestão Empresarial</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Finanças Corporativas</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Marketing Estratégico</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Empreendedorismo</li>
-                                            </ul>
-                                            <div className="mt-auto">
-                                                <small className="text-muted"><i className="fas fa-clock me-1"></i>Matutino e Noturno</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-4 mb-4">
-                                    <div className="card h-100 course-card">
-                                        <div className="course-image">
-                                            <i className="fas fa-brain"></i>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title text-primary">Psicologia</h5>
-                                            <div className="mb-3">
-                                                <span className="badge bg-primary">5 anos</span>
-                                                <span className="badge bg-secondary ms-2">Bacharelado</span>
-                                            </div>
-                                            <p className="card-text">Compreenda o comportamento humano e promova bem-estar mental.</p>
-                                            <ul className="list-unstyled">
-                                                <li><i className="fas fa-check text-success me-2"></i>Psicologia Clínica</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Neuropsicologia</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Psicologia Social</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Psicoterapia</li>
-                                            </ul>
-                                            <div className="mt-auto">
-                                                <small className="text-muted"><i className="fas fa-clock me-1"></i>Vespertino e Noturno</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-4 mb-4">
-                                    <div className="card h-100 course-card">
-                                        <div className="course-image">
-                                            <i className="fas fa-bullseye"></i>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title text-primary">Marketing</h5>
-                                            <div className="mb-3">
-                                                <span className="badge bg-primary">4 anos</span>
-                                                <span className="badge bg-secondary ms-2">Bacharelado</span>
-                                            </div>
-                                            <p className="card-text">Domine estratégias de comunicação e construção de marcas impactantes.</p>
-                                            <ul className="list-unstyled">
-                                                <li><i className="fas fa-check text-success me-2"></i>Marketing Digital</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Branding e Design</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Mídias Sociais</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>E-commerce</li>
-                                            </ul>
-                                            <div className="mt-auto">
-                                                <small className="text-muted"><i className="fas fa-clock me-1"></i>Noturno</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-md-4 mb-4">
-                                    <div className="card h-100 course-card">
-                                        <div className="course-image">
-                                            <i className="fas fa-chart-line"></i>
-                                        </div>
-                                        <div className="card-body">
-                                            <h5 className="card-title text-primary">Gestão Financeira</h5>
-                                            <div className="mb-3">
-                                                <span className="badge bg-primary">4 anos</span>
-                                                <span className="badge bg-secondary ms-2">Tecnólogo</span>
-                                            </div>
-                                            <p className="card-text">Especialista em planejamento financeiro e investimentos corporativos.</p>
-                                            <ul className="list-unstyled">
-                                                <li><i className="fas fa-check text-success me-2"></i>Análise de Investimentos</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Controladoria</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Mercado de Capitais</li>
-                                                <li><i className="fas fa-check text-success me-2"></i>Planejamento Tributário</li>
-                                            </ul>
-                                            <div className="mt-auto">
-                                                <small className="text-muted"><i className="fas fa-clock me-1"></i>Noturno</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                ))}
                             </div>
-
-                            <div className="row mt-5">
-                                <div className="col-md-8 mx-auto text-center">
-                                    <h3 className="mb-4">Por que escolher a Wyden?</h3>
-                                    <div className="row">
-                                        <div className="col-md-3 mb-3">
-                                            <div className="text-center">
-                                                <i className="fas fa-certificate fa-2x text-primary mb-2"></i>
-                                                <h6>MEC Aprovado</h6>
-                                                <small className="text-muted">Cursos reconhecidos</small>
-                                            </div>
+                        </div>
+                    </section>
+                    {/* Modal de detalhes do curso */}
+                    {selectedCourse && (
+                        <div className="modal fade show" style={{display: 'block', background: 'rgba(0,0,0,0.5)'}} tabIndex="-1" role="dialog">
+                            <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title">{selectedCourse}</h5>
+                                        <button type="button" className="btn-close" onClick={() => setSelectedCourse(null)}></button>
+                                    </div>
+                                    <div className="modal-body row">
+                                        <div className="col-md-5 mb-3 mb-md-0">
+                                            <img src={courseImages[selectedCourse]} alt={selectedCourse} className="img-fluid rounded" />
                                         </div>
-                                        <div className="col-md-3 mb-3">
-                                            <div className="text-center">
-                                                <i className="fas fa-users fa-2x text-primary mb-2"></i>
-                                                <h6>Professores Mestres</h6>
-                                                <small className="text-muted">85% com mestrado/doutorado</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-3 mb-3">
-                                            <div className="text-center">
-                                                <i className="fas fa-building fa-2x text-primary mb-2"></i>
-                                                <h6>Infraestrutura</h6>
-                                                <small className="text-muted">Laboratórios modernos</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-3 mb-3">
-                                            <div className="text-center">
-                                                <i className="fas fa-handshake fa-2x text-primary mb-2"></i>
-                                                <h6>Empregabilidade</h6>
-                                                <small className="text-muted">92% dos formandos empregados</small>
+                                        <div className="col-md-7">
+                                            <h6 className="mb-2">Sobre o curso</h6>
+                                            <p>{courseDetails[selectedCourse].description}</p>
+                                            <h6 className="mt-4 mb-2">Grade Curricular (resumida)</h6>
+                                            <ul>
+                                                {courseDetails[selectedCourse].curriculum.map((item, i) => (
+                                                    <li key={i}><i className="fas fa-book-open text-primary me-2"></i>{item}</li>
+                                                ))}
+                                            </ul>
+                                            <div className="mt-4">
+                                                <button className="btn btn-primary me-2" onClick={() => alert('Em breve!')}>Quero este curso</button>
+                                                <button className="btn btn-outline-secondary" onClick={() => setSelectedCourse(null)}>Fechar</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    )}
                 </div>
             )}
 
@@ -887,7 +862,7 @@ function App() {
                                 <div className="emergency-info">
                                     <p><strong>RG:</strong> {currentUser.rg}</p>
                                     <p><strong>Emergência:</strong> {currentUser.telefone}</p>
-                                    <p><strong>Válida até:</strong> 12/2025</p>
+                                    <p><strong>Válida até:</strong> 12/2028</p>
                                 </div>
 
                                 <div className="observations">

@@ -45,6 +45,10 @@ body {
 }
 
 /* User Dropdown Styles */
+.user-dropdown-container {
+    position: relative;
+}
+
 .user-dropdown-container .btn {
     transition: all 0.3s ease;
     border-radius: 8px;
@@ -817,10 +821,38 @@ body {
     .user-dropdown-container .position-absolute {
         position: fixed !important;
         top: auto !important;
-        bottom: 20px !important;
-        left: 20px !important;
-        right: 20px !important;
-        width: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        background: var(--primary-color) !important;
+        border-radius: 0 !important;
+        border: none !important;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1) !important;
+        z-index: 1050 !important;
+    }
+
+    .user-dropdown-container .dropdown-item {
+        color: white !important;
+        padding: 1rem !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1) !important;
+        text-align: center !important;
+    }
+
+    .user-dropdown-container .dropdown-item:hover {
+        background: var(--primary-dark) !important;
+        color: white !important;
+        transform: none !important;
+    }
+
+    .user-dropdown-container .dropdown-item i {
+        color: white !important;
+        margin-right: 0.5rem !important;
+    }
+
+    .user-dropdown-container .dropdown-divider {
+        border-color: rgba(255,255,255,0.1) !important;
+        margin: 0 !important;
     }
 
     .course-card {

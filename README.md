@@ -13,7 +13,7 @@ Um portal universitário completo desenvolvido em React, apresentando as funcion
 ## 👥 Usuários de Teste
 
 ### 🎒 **Estudantes**
-- **gustavo.honorato@aluno.wyden.edu.br** - Gustavo Honorato Nicolau (Sistemas de Informação)
+- **hugo.bersi@aluno.wyden.edu.br** - Hugo Bersi (Sistemas de Informação)
 - **joao.silva@aluno.wyden.edu.br** - João Silva Santos (Sistemas de Informação)
 - **guilherme.batista@aluno.wyden.edu.br** - Guilherme Batista Silva (Administração)
 - **daniel.bersi@aluno.wyden.edu.br** - Daniel Bersi Oliveira (Marketing)
@@ -31,7 +31,7 @@ O sistema agora suporta fotos personalizadas para cada usuário através de cami
 ### 📁 **Estrutura de Fotos**
 ```
 public/photos/
-├── gustavo-honorato.jpg     # Gustavo Honorato Nicolau
+├── hugo-bersi.jpg          # Hugo Bersi
 ├── joao-silva.jpg          # João Silva Santos
 ├── guilherme-batista.jpg   # Guilherme Batista Silva
 ├── daniel-bersi.jpg        # Daniel Bersi Oliveira
@@ -46,8 +46,8 @@ public/photos/
 3. **Formato recomendado**: JPG/PNG, 300x400px, máx 2MB
 
 ```bash
-# Exemplo para adicionar sua foto, Gustavo:
-cp sua-foto.jpg public/photos/gustavo-honorato.jpg
+# Exemplo para adicionar sua foto, Hugo:
+cp sua-foto.jpg public/photos/hugo-bersi.jpg
 
 # Exemplo para outros usuários:
 cp foto-joao.jpg public/photos/joao-silva.jpg
@@ -59,7 +59,7 @@ Cada usuário tem configuração específica em `user-mocks.js`:
 ```javascript
 {
     hasPhoto: true,                           // Ativa/desativa foto
-    photoPath: 'photos/gustavo-honorato.jpg' // Caminho específico
+    photoPath: 'photos/hugo-bersi.jpg'       // Caminho específico
 }
 ```
 
@@ -69,7 +69,7 @@ Cada usuário tem configuração específica em `user-mocks.js`:
 - Sistema funciona com ou sem fotos
 
 ### 👥 **Status das Fotos**
-- **✅ Com foto**: Gustavo, João, Guilherme, Daniel, Fábio, Prof. Maria
+- **✅ Com foto**: Hugo, João, Guilherme, Daniel, Fábio, Prof. Maria
 - **❌ Sem foto**: Eduardo Henrique, Carlos Admin
 
 ## 🖥️ Como Executar
@@ -130,7 +130,7 @@ fake-university/
 │   ├── app.js                  # Aplicação React principal
 │   ├── user-mocks.js          # Dados dos usuários
 │   ├── styles.css             # Estilos customizados
-│   ├── gustavo-photo.jpg      # Foto do Gustavo (adicionar)
+│   ├── hugo-photo.jpg         # Foto do Hugo (adicionar)
 │   └── wyden-logo.svg         # Logo da instituição
 ├── package.json               # Configurações do projeto
 └── README.md                  # Este arquivo
@@ -164,7 +164,7 @@ fake-university/
 - Frente e verso com informações completas
 - QR Code e código de barras
 - Funcionalidade de impressão
-- Foto personalizada (para Gustavo)
+- Foto personalizada (para Hugo)
 
 ### 📊 **Dashboard Acadêmico**
 - Notas e disciplinas em tempo real

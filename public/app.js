@@ -611,7 +611,7 @@ function App() {
                                             const success = handleLogin(email, password);
                                             
                                             if (!success) {
-                                                alert('Email não encontrado! Tente:\n• gustavo.honorato@aluno.wyden.edu.br\n• joao.silva@aluno.wyden.edu.br\n• guilherme.batista@aluno.wyden.edu.br\n• daniel.bersi@aluno.wyden.edu.br\n• eduardo.henrique@aluno.wyden.edu.br\n• fabio.henrique@aluno.wyden.edu.br\n• maria.santos@wyden.edu.br\n• carlos.admin@wyden.edu.br');
+                                                alert('Email não encontrado! Tente:\n• hugo.bersi@aluno.wyden.edu.br\n• joao.silva@aluno.wyden.edu.br\n• guilherme.batista@aluno.wyden.edu.br\n• daniel.bersi@aluno.wyden.edu.br\n• eduardo.henrique@aluno.wyden.edu.br\n• fabio.henrique@aluno.wyden.edu.br\n• maria.santos@wyden.edu.br\n• carlos.admin@wyden.edu.br');
                                             }
                                         }}>
                                             <div className="mb-3">
@@ -843,8 +843,8 @@ function App() {
                                 </div>
                                 
                                 <div className="qr-code">
-                                    {currentUser.email === "gustavo.honorato@aluno.wyden.edu.br" ? (
-                                        <img src="/photos/gustavo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                    {currentUser.email === "hugo.bersi@aluno.wyden.edu.br" ? (
+                                        <img src="/photos/hugo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     ) : (currentUser.email === "fabio.henrique@aluno.wyden.edu.br" ? (
                                         <img src="/photos/fabio-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     ) : (currentUser.email === "guilherme.batista@aluno.wyden.edu.br" ? (

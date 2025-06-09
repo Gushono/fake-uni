@@ -62,11 +62,11 @@ const USER_MOCKS = {
         ]
     },
 
-    // Gustavo Honorato Nicolau
-    'gustavo.honorato@aluno.wyden.edu.br': {
-        id: 'student_gustavo',
-        name: 'Gustavo Honorato Nicolau',
-        email: 'gustavo.honorato@aluno.wyden.edu.br',
+    // Hugo Bersi
+    'hugo.bersi@aluno.wyden.edu.br': {
+        id: 'student_hugo',
+        name: 'Hugo Bersi',
+        email: 'hugo.bersi@aluno.wyden.edu.br',
         matricula: '202401085432',
         curso: 'Sistemas de Informação',
         periodo: '3º Semestre',
@@ -74,17 +74,17 @@ const USER_MOCKS = {
         situacao: 'Ativo',
         cr: '9.1',
         cargaHoraria: '960 / 3.200 horas',
-        cpf: '416.555.788-98',
-        rg: '52.792.785-5',
-        dataNascimento: '13/12/2000',
-        telefone: '(19) 97102-9973',
+        cpf: '457.387.738-02',
+        rg: '53.989.212-9',
+        dataNascimento: '13/04/1998',
+        telefone: '(19) 99117-4842',
         tipoSanguineo: 'O+',
         numeroCarteirinha: 'WYD2401765450001',
         formaIngresso: 'Vestibular Wyden 2024.1',
         turno: 'Noturno',
         type: 'student',
         hasPhoto: true,
-        photoPath: 'photos/gustavo-honorato.jpg',
+        photoPath: 'photos/hugo-bersi.jpg',
         disciplinas: [
             {
                 codigo: 'SI301',

@@ -8,7 +8,7 @@ Cada carteirinha virtual possui um QR Code que direciona para uma página públi
 
 Para testar as páginas via QR code, acesse:
 
-- **Gustavo Honorato**: http://localhost:8000/gustavo.honorato@aluno.wyden.edu.br
+- **Hugo Bersi**: http://localhost:8000/hugo.bersi@aluno.wyden.edu.br
 - **João Silva**: http://localhost:8000/joao.silva@aluno.wyden.edu.br
 - **Guilherme Batista**: http://localhost:8000/guilherme.batista@aluno.wyden.edu.br
 - **Daniel Bersi**: http://localhost:8000/daniel.bersi@aluno.wyden.edu.br

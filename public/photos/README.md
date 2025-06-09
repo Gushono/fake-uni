@@ -7,7 +7,7 @@ Esta pasta contém as fotos dos usuários do sistema. Para adicionar uma foto, s
 Cada usuário tem um caminho específico definido nos mocks:
 
 ### 🎒 **Estudantes**
-- **Gustavo Honorato**: `gustavo-honorato.jpg`
+- **Hugo Bersi**: `hugo-bersi.jpg`
 - **João Silva**: `joao-silva.jpg`
 - **Guilherme Batista**: `guilherme-batista.jpg`
 - **Daniel Bersi**: `daniel-bersi.jpg`
@@ -32,10 +32,10 @@ Cada usuário tem um caminho específico definido nos mocks:
 
 ## 💡 Exemplo
 
-Para adicionar a foto do Gustavo:
+Para adicionar a foto do Hugo:
 ```bash
 # Copie sua foto para a pasta e renomeie
-cp minha-foto.jpg public/photos/gustavo-honorato.jpg
+cp minha-foto.jpg public/photos/hugo-bersi.jpg
 ```
 
 ## ⚙️ Configuração nos Mocks
@@ -44,7 +44,7 @@ No arquivo `user-mocks.js`, cada usuário tem:
 ```javascript
 {
     hasPhoto: true,           // Indica se tem foto
-    photoPath: 'photos/gustavo-honorato.jpg'  // Caminho da foto
+    photoPath: 'photos/hugo-bersi.jpg'  // Caminho da foto
 }
 ```
 
@@ -57,7 +57,7 @@ Se a foto não for encontrada:
 
 ## 📋 Lista de Fotos Necessárias
 
-- [ ] `gustavo-honorato.jpg` - Gustavo Honorato Nicolau
+- [ ] `hugo-bersi.jpg` - Hugo Bersi
 - [ ] `joao-silva.jpg` - João Silva Santos  
 - [ ] `guilherme-batista.jpg` - Guilherme Batista Silva
 - [ ] `daniel-bersi.jpg` - Daniel Bersi Oliveira

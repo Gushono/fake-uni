@@ -13,6 +13,7 @@ Cada usuário tem um caminho específico definido nos mocks:
 - **Daniel Bersi**: `daniel-bersi.jpg`
 - **Eduardo Henrique**: Sem foto (hasPhoto: false)
 - **Fábio Henrique**: `fabio-henrique.jpg`
+- **Gustavo Honorato**: `gustavo-honorato.jpg`
 
 ### 👨‍🏫 **Staff**
 - **Prof. Maria Santos**: `maria-santos.jpg`
@@ -63,6 +64,7 @@ Se a foto não for encontrada:
 - [ ] `daniel-bersi.jpg` - Daniel Bersi Oliveira
 - [ ] `fabio-henrique.jpg` - Fábio Henrique Costa
 - [ ] `maria-santos.jpg` - Prof. Maria Santos
+- [ ] `gustavo-honorato.jpg` - Gustavo Honorato
 
 ## 🚫 Usuários Sem Foto
 

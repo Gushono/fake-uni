@@ -611,7 +611,7 @@ function App() {
                                             const success = handleLogin(email, password);
                                             
                                             if (!success) {
-                                                alert('Email não encontrado! Tente:\n• hugo.bersi@aluno.wyden.edu.br\n• joao.silva@aluno.wyden.edu.br\n• guilherme.batista@aluno.wyden.edu.br\n• daniel.bersi@aluno.wyden.edu.br\n• eduardo.henrique@aluno.wyden.edu.br\n• fabio.henrique@aluno.wyden.edu.br\n• maria.santos@wyden.edu.br\n• carlos.admin@wyden.edu.br');
+                                                alert('Usuário não encontrado!');
                                             }
                                         }}>
                                             <div className="mb-3">
@@ -641,8 +641,6 @@ function App() {
                                                 <i className="fas fa-unlock"></i> Entrar
                                             </button>
                                         </form>
-
-                        
                                     </div>
                                 </div>
                             </div>
@@ -845,17 +843,19 @@ function App() {
                                 <div className="qr-code">
                                     {currentUser.email === "hugo.bersi@aluno.wyden.edu.br" ? (
                                         <img src="/photos/hugo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                                    ) : (currentUser.email === "fabio.henrique@aluno.wyden.edu.br" ? (
+                                    ) : currentUser.email === "gustavo.honorato@aluno.wyden.edu.br" ? (
+                                        <img src="/photos/gustavo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                    ) : currentUser.email === "fabio.henrique@aluno.wyden.edu.br" ? (
                                         <img src="/photos/fabio-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                                    ) : (currentUser.email === "guilherme.batista@aluno.wyden.edu.br" ? (
+                                    ) : currentUser.email === "guilherme.batista@aluno.wyden.edu.br" ? (
                                         <img src="/photos/guilherme-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                                    ) : (currentUser.email === "eduardo.henrique@aluno.wyden.edu.br" ? (
+                                    ) : currentUser.email === "eduardo.henrique@aluno.wyden.edu.br" ? (
                                         <img src="/photos/eduardo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     ) : (
                                         <a href={`/${currentUser.email}`} target="_blank" style={{ color: "var(--primary-color)", textDecoration: "none", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", width: "100%", height: "100%" }} title="Clique para acessar informações públicas">
                                             QR<br />CODE
                                         </a>
-                                    ))))}
+                                    )}
                                     <div style={{ display: "none", width: "100%", height: "100%", alignItems: "center", justifyContent: "center", color: "var(--primary-color)", fontSize: "0.65rem", fontWeight: "bold", textAlign: "center" }}> QR<br />CODE </div>
                                 </div>
                                 

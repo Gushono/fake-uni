@@ -138,6 +138,82 @@ const USER_MOCKS = {
         ]
     },
 
+    // Gustavo Honorato Nicolau
+    'gustavo.honorato@aluno.wyden.edu.br': {
+        id: 'student_gustavo',
+        name: 'Gustavo Honorato Nicolau',
+        email: 'gustavo.honorato@aluno.wyden.edu.br',
+        matricula: '202401085431',
+        curso: 'Sistemas de Informação',
+        periodo: '3º Semestre',
+        campus: 'São Paulo - Vila Mariana',
+        situacao: 'Ativo',
+        cr: '9.1',
+        cargaHoraria: '960 / 3.200 horas',
+        cpf: '416.555.788-98',
+        rg: '52.792.785-5',
+        dataNascimento: '13/12/2000',
+        telefone: '(19) 97102-9973',
+        tipoSanguineo: 'O+',
+        numeroCarteirinha: 'WYD2401765450002',
+        formaIngresso: 'Vestibular Wyden 2024.1',
+        turno: 'Noturno',
+        type: 'student',
+        hasPhoto: true,
+        photoPath: 'photos/gustavo-honorato.jpg',
+        disciplinas: [
+            {
+                codigo: 'SI301',
+                nome: 'Programação Web Avançada',
+                creditos: 4,
+                nota: 9.8,
+                situacao: 'Aprovado'
+            },
+            {
+                codigo: 'MAT201',
+                nome: 'Estatística Aplicada',
+                creditos: 4,
+                nota: 8.9,
+                situacao: 'Aprovado'
+            },
+            {
+                codigo: 'SI302',
+                nome: 'Banco de Dados II',
+                creditos: 4,
+                nota: 9.5,
+                situacao: 'Aprovado'
+            },
+            {
+                codigo: 'SI303',
+                nome: 'Sistemas Operacionais',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            },
+            {
+                codigo: 'SI304',
+                nome: 'Engenharia de Software',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            },
+            {
+                codigo: 'SI305',
+                nome: 'Redes de Computadores',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            },
+            {
+                codigo: 'SI306',
+                nome: 'Análise e Projeto de Sistemas',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            }
+        ]
+    },
+
     // Guilherme Batista
     'guilherme.batista@aluno.wyden.edu.br': {
         id: 'student_guilherme',

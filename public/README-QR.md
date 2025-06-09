@@ -1,46 +1,62 @@
-# Páginas de Usuário via QR Code
+# QR Codes dos Usuários
 
-## Como funciona
+Este documento descreve os QR codes dos usuários do sistema e suas URLs correspondentes.
 
-Cada carteirinha virtual possui um QR Code que direciona para uma página pública com informações básicas do estudante.
+## URLs dos QR Codes
 
-## URLs de exemplo
+Cada QR code direciona para a página pública do usuário com a URL no formato:
+`http://localhost:8000/[email]`
 
-Para testar as páginas via QR code, acesse:
+### Exemplos de URLs:
 
-- **Hugo Bersi**: http://localhost:8000/hugo.bersi@aluno.wyden.edu.br
-- **João Silva**: http://localhost:8000/joao.silva@aluno.wyden.edu.br
-- **Guilherme Batista**: http://localhost:8000/guilherme.batista@aluno.wyden.edu.br
-- **Daniel Bersi**: http://localhost:8000/daniel.bersi@aluno.wyden.edu.br
-- **Eduardo Henrique**: http://localhost:8000/eduardo.henrique@aluno.wyden.edu.br
-- **Fábio Henrique**: http://localhost:8000/fabio.henrique@aluno.wyden.edu.br
+- Hugo Bersi: `http://localhost:8000/hugo.bersi@aluno.wyden.edu.br`
+- Gustavo Honorato: `http://localhost:8000/gustavo.honorato@aluno.wyden.edu.br`
+- João Silva: `http://localhost:8000/joao.silva@aluno.wyden.edu.br`
+- Guilherme Batista: `http://localhost:8000/guilherme.batista@aluno.wyden.edu.br`
+- Ana Oliveira: `http://localhost:8000/ana.oliveira@prof.wyden.edu.br`
+- Carlos Mendes: `http://localhost:8000/carlos.mendes@prof.wyden.edu.br`
+- Maria Santos: `http://localhost:8000/maria.santos@prof.wyden.edu.br`
+- Pedro Costa: `http://localhost:8000/pedro.costa@prof.wyden.edu.br`
+- Ricardo Alves: `http://localhost:8000/ricardo.alves@prof.wyden.edu.br`
+- Roberto Lima: `http://localhost:8000/roberto.lima@prof.wyden.edu.br`
+- Silvia Martins: `http://localhost:8000/silvia.martins@prof.wyden.edu.br`
+- Thiago Pereira: `http://localhost:8000/thiago.pereira@prof.wyden.edu.br`
 
-## Informações exibidas
+## Arquivos de QR Code
 
-A página pública contém:
-- Nome completo
-- Email institucional
-- Telefone
-- Campus
-- Matrícula
-- Curso e período
-- Situação acadêmica
-- RG
-- Tipo sanguíneo
-- Número da carteirinha
+Os arquivos de QR code estão localizados em `public/photos/`:
 
-## Funcionalidades
+- `hugo-qrcode.png` - QR Code do estudante Hugo Bersi
+- `gustavo-qrcode.png` - QR Code do estudante Gustavo Honorato
+- `joao-qrcode.png` - QR Code do estudante João Silva
+- `guilherme-qrcode.png` - QR Code do estudante Guilherme Batista
+- `professor-ana-qrcode.png` - QR Code da professora Ana Oliveira
+- `professor-carlos-qrcode.png` - QR Code do professor Carlos Mendes
+- `professor-maria-qrcode.png` - QR Code da professora Maria Santos
+- `professor-pedro-qrcode.png` - QR Code do professor Pedro Costa
+- `professor-ricardo-qrcode.png` - QR Code do professor Ricardo Alves
+- `professor-roberto-qrcode.png` - QR Code do professor Roberto Lima
+- `professor-silvia-qrcode.png` - QR Code da professora Silvia Martins
+- `professor-thiago-qrcode.png` - QR Code do professor Thiago Pereira
 
-- ✅ Verificação de identidade acadêmica
-- ✅ Informações de emergência
-- ✅ Link para contato direto
-- ✅ Acesso sem login necessário
-- ✅ Design responsivo
+## Como Gerar um Novo QR Code
 
-## Uso prático
+Para gerar um novo QR code:
 
-Ideal para:
-- Verificação de identidade em eventos
-- Emergências médicas
-- Controle de acesso
-- Validação acadêmica 
+1. Use um gerador de QR code online (como qr-code-generator.com)
+2. Insira a URL completa do usuário (ex: `http://localhost:8000/hugo.bersi@aluno.wyden.edu.br`)
+3. Baixe o QR code em formato PNG
+4. Salve o arquivo em `public/photos/` seguindo o padrão de nomenclatura
+5. Atualize este README com a nova informação
+
+## Observações
+
+- Os QR codes devem ser gerados em alta resolução
+- O formato recomendado é PNG
+- O tamanho recomendado é 200x200 pixels
+- Mantenha os nomes dos arquivos em minúsculas e use hífen para separar palavras
+- Certifique-se de que os QR codes sejam facilmente escaneáveis
+- Teste cada QR code após a geração
+- Mantenha um padrão visual consistente entre todos os QR codes
+- Verifique se as URLs estão corretas antes de gerar os QR codes
+- Atualize este documento sempre que adicionar ou modificar um QR code 

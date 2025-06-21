@@ -690,10 +690,6 @@ function App() {
                                                 <div className="col-sm-7">{currentUser.name}</div>
                                             </div>
                                             <div className="row mb-3">
-                                                <div className="col-sm-5"><strong>CPF:</strong></div>
-                                                <div className="col-sm-7">{currentUser.cpf}</div>
-                                            </div>
-                                            <div className="row mb-3">
                                                 <div className="col-sm-5"><strong>Data de Nascimento:</strong></div>
                                                 <div className="col-sm-7">{currentUser.dataNascimento}</div>
                                             </div>
@@ -862,7 +858,6 @@ function App() {
                                 </div>
                                 
                                 <div className="emergency-info">
-                                    <p><strong>RG:</strong> {currentUser.rg}</p>
                                     <p><strong>Emergência:</strong> {currentUser.telefone}</p>
                                     <p><strong>Válida até:</strong> 12/2028</p>
                                 </div>
@@ -1372,10 +1367,6 @@ function App() {
                                                                     <i className="fas fa-shield-alt me-2"></i>Informações de Emergência
                                                                 </h6>
                                                                 <div className="row">
-                                                                    <div className="col-md-4 mb-2">
-                                                                        <small className="text-muted">RG:</small><br />
-                                                                        <strong>{user.rg}</strong>
-                                                                    </div>
                                                                     <div className="col-md-4 mb-2">
                                                                         <small className="text-muted">Tipo Sanguíneo:</small><br />
                                                                         <strong>{user.tipoSanguineo}</strong>

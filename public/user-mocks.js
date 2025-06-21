@@ -214,6 +214,82 @@ const USER_MOCKS = {
         ]
     },
 
+    // Mauricio Gonçalves Pires Junior (cópia de Gustavo Honorato Nicolau)
+    'mauricio.pires@aluno.wyden.edu.br': {
+        id: 'student_mauricio',
+        name: 'Mauricio Gonçalves Pires Junior',
+        email: 'mauricio.pires@aluno.wyden.edu.br',
+        matricula: '202401085433', // Próxima sequência
+        curso: 'Sistemas de Informação',
+        periodo: '3º Semestre',
+        campus: 'São Paulo - Vila Mariana',
+        situacao: 'Ativo',
+        cr: '9.1',
+        cargaHoraria: '960 / 3.200 horas',
+        cpf: '416.555.788-91', // Pode ser igual ao Gustavo, pois é mock
+        rg: '52.792.785-2',
+        dataNascimento: '04/12/1998',
+        telefone: '(13) 98154-4777',
+        tipoSanguineo: 'O+',
+        numeroCarteirinha: 'WYD2401765450003', // Próxima sequência
+        formaIngresso: 'Vestibular Wyden 2024.1',
+        turno: 'Noturno',
+        type: 'student',
+        hasPhoto: true,
+        photoPath: 'photos/mauricio-pires.jpg',
+        disciplinas: [
+            {
+                codigo: 'SI301',
+                nome: 'Programação Web Avançada',
+                creditos: 4,
+                nota: 9.8,
+                situacao: 'Aprovado'
+            },
+            {
+                codigo: 'MAT201',
+                nome: 'Estatística Aplicada',
+                creditos: 4,
+                nota: 8.9,
+                situacao: 'Aprovado'
+            },
+            {
+                codigo: 'SI302',
+                nome: 'Banco de Dados II',
+                creditos: 4,
+                nota: 9.5,
+                situacao: 'Aprovado'
+            },
+            {
+                codigo: 'SI303',
+                nome: 'Sistemas Operacionais',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            },
+            {
+                codigo: 'SI304',
+                nome: 'Engenharia de Software',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            },
+            {
+                codigo: 'SI305',
+                nome: 'Redes de Computadores',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            },
+            {
+                codigo: 'SI306',
+                nome: 'Análise e Projeto de Sistemas',
+                creditos: 4,
+                nota: null,
+                situacao: 'Em Andamento'
+            }
+        ]
+    },
+
     // Guilherme Batista
     'guilherme.batista@aluno.wyden.edu.br': {
         id: 'student_guilherme',

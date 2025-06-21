@@ -845,6 +845,8 @@ function App() {
                                         <img src="/photos/hugo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     ) : currentUser.email === "gustavo.honorato@aluno.wyden.edu.br" ? (
                                         <img src="/photos/gustavo-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                    ) : currentUser.email === "mauricio.pires@aluno.wyden.edu.br" ? (
+                                        <img src="/photos/mauricio-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     ) : currentUser.email === "fabio.henrique@aluno.wyden.edu.br" ? (
                                         <img src="/photos/fabio-qrcode.png" alt="QR Code" onError={(e) => { e.target.style.display = "none"; e.target.nextSibling.style.display = "flex"; }} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                     ) : currentUser.email === "guilherme.batista@aluno.wyden.edu.br" ? (
